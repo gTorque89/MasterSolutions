@@ -1,26 +1,45 @@
 //Agregar al carrito
-const PRODUCTO1 = 'Notebook DELL';
-const PRODUCTO2 = 'Notebook HP'
-const PRODUCTO3 = 'Notebook Acer'
+const productosHot = [
+    {producto1:'Notebook DELL', precio: 180000, hayStock: 15},
+    {producto2:'Notebook HP', precio: 190000, hayStock: 15},
+    {producto3:'Notebook Acer', precio: 220000, hayStock: 15}
+];
 
-const agregarAlCarrito = (producto, precio, stock) => {
-    const consultarStock = (stock) => {
-        stockDisponible = 15;
-        if (stockDisponible > 0) {
-            const restarStock = () => {
-                for (stockDisponible <= 15;stockDisponible <= 0; stockDisponible -= 1){
-                    return alert('Producto agregado al carrito')  
-                }
-            }; 
-            return restarStock()
-        }else {
-            return alert('Sin stock disponible')
-        }
-    };
-    consultarStock()
-};
-agregarAlCarrito(PRODUCTO1, 200000, 15)
+const validarStock = (hayStock) => {
+    
+    if (hayStock > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
+/*let acumulador = 0;
+for (let i = 0; i < 2; i++) {
+    if(productosHot[i].hayStock){
+        acumulador += 1;
+    }
+}
+*/
+const actualizarCarrito = (carrito) => {
+    
+}
+
+const restarStock = () => {
+
+}
+
+function agregarAlCarrito(producto, precio, hayStock) {
+    validarStock(hayStock);
+    if(hayStock){
+        actualizarCarrito();
+        restarStock();
+        return alert(`Agregaste ${producto} a tu carrito`)
+    }else{
+        alert(`Lo lamentamos, pero no contamos con ${producto}, seguro podemos ofrecerte otra solución`)
+    }
+
+}
 
 
 
