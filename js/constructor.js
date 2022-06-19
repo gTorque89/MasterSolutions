@@ -26,20 +26,48 @@ class Usuarios {
 }
 
 class Productos {
-    constructor(producto, id, precio, descuentos, tipoDeProducto) {
+    constructor(producto, id, precio, descuentos, tipoDeProducto, stock) {
         this.producto = producto;
         this.id = id;
         this.precio = precio;
         this.descuentos = descuentos;
         this.tipoDeProducto = tipoDeProducto;
-    
-        this.carrito = [];
+        this.stock = stock;
+
+        this.productos = [];
     }
-    
-    
+    listadoDeProductos(productos){
+        this.productos.push(productos)
+    }
+}
+//Creación de listado de productos
+
+const producto1 = new Productos('Laptop DELL', 01, 180000, 2, 'Laptops', 15 );
+const producto2 = new Productos('Laptop HP', 02, 190000, 3, 'Laptops', 20 );
+const producto3 = new Productos('Laptop Acer', 03, 225000, 0, 'Laptops', 10);
+const producto4 = new Productos('Laptop Asus', 04, 280000, 4, 'Laptops', 15);
+const producto5 = new Productos('Laptop Lenovo', 05, 150000, 3, 'Laptops', 12);
+const producto6 = new Productos('Laptop Exo', 06, 175000, 2, 'Laptops',18);
+const producto7 = new Productos('Laptop Banghó', 07, 240000, 5, 'Laptops', 25);
+const producto8 = new Productos('Laptop Alienware', 08, 320000, 6, 'Laptops', 10)
+
+//Agregar productos al listado
+
+
+const productos = Productos.listadoDeProductos(producto1, producto2, producto3, producto4, producto5, producto6, producto7, producto8)
+
+class Carrito{
+    constructor(id, producto, precio, descuentos){
+        this.id = id;
+        this.producto = producto;
+        this.precio = precio;
+        this.descuentos = descuentos;
+        
+        this.productosEnElCarrito = [];
+    }
 }
 //Creación de la empresa
-const masterSolutions = new Empresa('Master Solutions', 2022,'Victor Gabriel Leguizamón');
+const masterSolutions = new Empresa('Master Solutions', 2015,'Victor Gabriel Leguizamón');
 
 //Creación de usuarios
 const usuario1 = new Usuarios('Victor Gabriel Leguizamón', 2018, 5);
@@ -47,11 +75,23 @@ const usuario2 = new Usuarios('Mora Leguizamón',2021, 2)
 const usuario3 = new Usuarios('Nahiara Leguizamón', 2019, 10)
 
 //Agregar cuentas de usuario
-masterSolutions.agregarUsuario(usuario1);
-masterSolutions.agregarUsuario(usuario2);  
-masterSolutions.agregarUsuario(usuario3);
+masterSolutions.agregarCuenta(usuario1);
+masterSolutions.agregarCuenta(usuario2);  
+masterSolutions.agregarCuenta(usuario3);
 
 console.log(masterSolutions)
+
+
+//Algoritmo de cuentas con descuentos basados en el historial de compras que efectuó el usuario
+
+/*let cuentasConDescuentos = Empresa.cuentas.forEach(historialDeCompras => {
+    if (historialDeCompras.length > 3){
+        descuento = 15;
+    }else{
+        descuento = 6;
+    }
+})
+*/
 
 
 /*
