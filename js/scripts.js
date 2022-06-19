@@ -1,4 +1,8 @@
 //Agregar al carrito
+
+
+
+
 const productosEnElCarrito = [];
 
 const productosHot = [
@@ -14,40 +18,17 @@ const productosHot = [
 
 ];
 
-let acumulador = ``;
-for (let i = 0;i < 1; i++ ){
-    if(productosHot[i].hayStock) {
-        acumulador += `<div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-        <div class="card product-item border-0 mb-4">
-            <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                <img class="img-fluid w-100" src="img/productsStart/notebookDell.webp" alt="notebook DELL">
-            </div>
-            <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                <h6 class="text-truncate mb-3">${productosHot[i].titulo}</h6>
-                <div class="d-flex justify-content-center">
-                    <h6>$190000</h6><h6 class="text-muted ml-2"><del>$${productosHot[i].precio}</del></h6>
-                </div>
-            </div>
-            <div class="card-footer d-flex justify-content-between bg-light border">
-                <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Ver detalle</a>
-                <a href="" onclick ="agregarAlCarrito(${productosHot[i].id})" class="btn btn-sm text-dark p-0" ><i  class="fas fa-shopping-cart text-primary mr-1"></i>Agregar al carrito</a>
-            </div>
-        </div>`
-    }
-}
-document.write(acumulador)
 
 function agregarAlCarrito(idDeProducto) {
-    console.log(idDeProducto);
-    productosHot.indexOf()
-    productosEnElCarrito.push(idDeProducto);
+    const indiceEncontrado = productosHot.findIndex(producto => producto.id == idDeProducto);
+    productosEnElCarrito.push(productosHot[indiceEncontrado]);
+
+    console.log('Tenes ' + productosEnElCarrito.length + 'en el carrito');
+    console.log(productosEnElCarrito)
+    
 }
 
-
-
-
-
-/*const validarStock = (hayStock) => {
+const validarStock = (hayStock) => {
     
     if (hayStock > 0) {
         return true;
@@ -55,7 +36,6 @@ function agregarAlCarrito(idDeProducto) {
         return false;
     }
 }
-*/
 
 /*function agregarAlCarrito() {
     
@@ -70,13 +50,4 @@ function agregarAlCarrito(idDeProducto) {
     }
 
 }
-*/
-
-/*function agregarAlCarrito(idDeProducto){
-    const indiceEncontrado = productos.findIndex(producto => producto.id == idDeProducto);
-    productosEnElCarrito.push(productos[indiceEncontrado]);
-    console.log(productosEnElCarrito);
-}
-
-// nombreDelArray.reverse();
 */
