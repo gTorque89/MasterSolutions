@@ -1,53 +1,79 @@
-//Agregar al carrito
-
-
-
-
-const productosEnElCarrito = [];
-
-const productosHot = [
-    {id: 01, producto1:'Notebook DELL', precio: 180000, hayStock: 15},
-    {id: 02, producto2:'Notebook HP', precio: 190000, hayStock: 15},
-    {id: 03, producto3:'Notebook Acer', precio: 225000, hayStock: 15},
-    {id: 04, producto4:'Notebook Asus', precio: 280000, hayStock: 15},
-    {id: 05, producto5:'Notebook Lenovo', precio: 150000, hayStock: 15},
-    {id: 06, producto6:'Notebook Exo', precio: 175000, hayStock: 15},
-    {id: 07, producto7:'Notebook Banghó', precio: 240000, hayStock: 15},
-    {id: 08, producto8:'Notebook Alienware', precio: 320000, hayStock: 15},
-
-
-];
-
-
-function agregarAlCarrito(idDeProducto) {
-    const indiceEncontrado = productosHot.findIndex(producto => producto.id == idDeProducto);
-    productosEnElCarrito.push(productosHot[indiceEncontrado]);
-
-    console.log('Tenes ' + productosEnElCarrito.length + 'en el carrito');
-    console.log(productosEnElCarrito)
-    
+//Función para aplicar descuento de 10 off
+function descuento10Off(){
+    let descuento = 10 / 100;
+    return descuento * precio;
 }
 
-const validarStock = (hayStock) => {
-    
-    if (hayStock > 0) {
+//Función para crear productos
+
+class Productos {
+    constructor(nombre, id, precio, descuentos, tipoDeProducto, stock){
+        this.nombre = nombre;
+        this.id = id;
+        this.precio = precio;
+        this.descuentos = descuentos;
+        this.tipoDeProducto = tipoDeProducto;
+        this.stock = stock;
+    }
+    calcularPrecio() {
+        return this.precio - descuento10Off();
+    }
+
+}
+
+//listado de productos
+
+const producto1 = new Productos('Laptop DELL', 01, 180000, 2, 'Laptops', 15 );
+const producto2 = new Productos('Laptop HP', 02, 190000, 3, 'Laptops', 20 );
+const producto3 = new Productos('Laptop Acer', 03, 225000, 0, 'Laptops', 10);
+const producto4 = new Productos('Laptop Asus', 04, 280000, 4, 'Laptops', 15);
+const producto5 = new Productos('Laptop Lenovo', 05, 150000, 3, 'Laptops', 12);
+const producto6 = new Productos('Laptop Exo', 06, 175000, 2, 'Laptops',18);
+const producto7 = new Productos('Laptop Banghó', 07, 240000, 5, 'Laptops', 25);
+const producto8 = new Productos('Laptop Alienware', 08, 320000, 6, 'Laptops', 10);
+
+const productos = [producto1, producto2, producto3, producto4, producto5, producto6, producto7, producto8];
+
+//sección carrito
+
+let carrito =[];
+
+const agregarProductoAlCarrito = (id) => {
+    const productoEncontrado = productos.find(producto => producto.id == id)
+    carrito.push(productoEncontrado)
+}
+
+//mostrar productos en el carrito
+
+const mostrarCarritoActual = () => {
+    alert(`Agregaste \n al carrito`)
+}
+const mostrarProductos = () => {
+    let productosAMostrar = '¿Que computadora desea elegir?\n';
+    productos.forEach(producto => {
+        productosAMostrar += `${producto.id}) ${producto.nombre} - ${producto.precio}\n`
+    })
+    let respuesta = prompt(productosAMostrar);
+    return respuesta;
+}
+
+const confirmarCompra = () => {
+    const respuesta = prompt('Desea agragar productos al carrito?');
+    if (respuesta == '1' || respuesta == 'Si' || respuesta == 'SI' || respuesta == 'si') {
         return true;
     } else {
         return false;
     }
 }
 
-/*function agregarAlCarrito() {
-    
-    validarStock(hayStock);
-    if(hayStock){
-        actualizarCarrito();
-        restarStock();
-        return alert(`Agregaste ${producto} a tu carrito`)
-        
-    }else{
-        alert(`Lo lamentamos, pero no contamos con ${producto}, seguro podemos ofrecerte otra solución`)
-    }
+const comprarProducto  = () => {
+    while (confirmarCompra()) {
+        let productoSeleccionado = mostrarProductos();
+        agregarProductoAlCarrito(productoSeleccionado);
+        console.log(carrito);
+        mostrarCarritoActual();
 
+    }
 }
-*/
+
+comprarProducto();
