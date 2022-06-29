@@ -1,79 +1,97 @@
-//Función para aplicar descuento de 10 off
-function descuento10Off(){
-    let descuento = 10 / 100;
-    return descuento * precio;
+//Listado de productos
+let productos = [
+    {titulo: 'Laptop DELL', id: 01, precio: 180000, categoria: 'Laptops', stock: 20},
+    {titulo: 'Laptop HP', id: 02, precio: 190000, categoria: 'Laptops', stock: 15},
+    {titulo: 'Laptop Acer', id: 03, precio: 225000, categoria: 'Laptops', stock: 10},
+    {titulo: 'Laptop Asus', id: 04, precio: 280000, categoria: 'Laptops', stock: 12},
+    {titulo: 'Laptop Lenovo', id: 05, precio: 150000, categoria: 'Laptops', stock: 18},
+    {titulo: 'Laptop Exo', id: 06, precio: 175000, categoria: 'Laptops', stock: 15},
+    {titulo: 'Laptop Banghó', id: 07, precio: 240000, categoria: 'Laptops', stock: 25},
+    {titulo: 'Laptop Alienware', id: 08, precio: 320000, categoria: 'Laptops', stock: 10},
+    {titulo: 'Tablet Atom', id: 09, precio: 20000, categoria: 'Tablets', stock: 8},
+    {titulo: 'Tablet DELL', id: 10, precio: 15000, categoria: 'Tablets', stock: 10},
+    {titulo: 'Tablet Lenovo', id: 11, precio: 18000, categoria: 'Tablets', stock: 10},
+    {titulo: 'Tablet Samsung', id: 12, precio: 15000, categoria: 'Tablets', stock: 6},
+    {titulo: 'Tablet Exo', id : 13, precio: 18500, categoria: 'Tablets', stock: 18},
+    {titulo: 'Tablet Samsung Tab', id: 14, precio: 17000, categoria: 'Tablets', stock: 14},
+    {titulo: 'Tablet Asus', id: 15, precio: 25000, categoria: 'Tablets', stock: 7},
+    {titulo: 'Tablet Banghó', id: 16, precio: 13000, categoria: 'Tablets', stock: 25},
+    {titulo: 'Pc Gamer Ryzen 5', id: 17, precio: 255000, categoria: 'Desktop', stock: 7},
+    {titulo: 'Pc Oficina Ryzen 3', id: 18, precio: 130200, categoria: 'Desktop', stock: 25}
+
+];
+
+//Cards generator
+const generadorDeCards = (productoARecorrer) => {
+let acumuladorCardsProductos = ``;
+productos.forEach((producto) => {
+    acumuladorCardsProductos += `
+    <div class="card product-item border-0 mb-4">
+        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+            <img class="img-fluid w-100" src="" alt="notebook DELL">
+        </div>
+        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+            <h6 class="text-truncate mb-3">${producto.titulo}</h6>
+            <div class="d-flex justify-content-center">
+                <h6>${producto.precio}</h6><h6 class="text-muted ml-2"><del>$200000</del></h6>
+            </div>
+        </div>
+        <div class="card-footer d-flex justify-content-between bg-light border">
+            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Ver detalle</a>
+            </div
+            <a onclick ="agregarProductoAlCarrito(${producto.id})" class="btn btn-sm text-dark p-0" ><i  class="fas fa-shopping-cart text-primary mr-1"></i>Agregar al carrito</a>
+    </div>`
+})
+
+document.getElementById('card-container').innerHTML = acumuladorCardsProductos;
+}
+generadorDeCards(productos);
+//Filtrar categoria
+const filtrarPorCategoria = (categoria) => {
+    const listadoFiltrado = productos.filter((producto) => producto.categoria == categoria);
+    generadorDeCards(listadoFiltrado);
 }
 
-//Función para crear productos
-
-class Productos {
-    constructor(nombre, id, precio, descuentos, tipoDeProducto, stock){
-        this.nombre = nombre;
-        this.id = id;
-        this.precio = precio;
-        this.descuentos = descuentos;
-        this.tipoDeProducto = tipoDeProducto;
-        this.stock = stock;
-    }
-    calcularPrecio() {
-        return this.precio - descuento10Off();
-    }
-
-}
-
-//listado de productos
-
-const producto1 = new Productos('Laptop DELL', 01, 180000, 2, 'Laptops', 15 );
-const producto2 = new Productos('Laptop HP', 02, 190000, 3, 'Laptops', 20 );
-const producto3 = new Productos('Laptop Acer', 03, 225000, 0, 'Laptops', 10);
-const producto4 = new Productos('Laptop Asus', 04, 280000, 4, 'Laptops', 15);
-const producto5 = new Productos('Laptop Lenovo', 05, 150000, 3, 'Laptops', 12);
-const producto6 = new Productos('Laptop Exo', 06, 175000, 2, 'Laptops',18);
-const producto7 = new Productos('Laptop Banghó', 07, 240000, 5, 'Laptops', 25);
-const producto8 = new Productos('Laptop Alienware', 08, 320000, 6, 'Laptops', 10);
-
-const productos = [producto1, producto2, producto3, producto4, producto5, producto6, producto7, producto8];
 
 //sección carrito
 
-let carrito =[];
+
+
 
 const agregarProductoAlCarrito = (id) => {
-    const productoEncontrado = productos.find(producto => producto.id == id)
-    carrito.push(productoEncontrado)
-}
+    const productoSeleccionado = productos.find((producto) => producto.id === id);
+    carritoAcumulado.push(productoSeleccionado)
+    const totalCarrito = carritoAcumulado.reduce((acumulador, producto) => acumulador + producto.precio, 0);
+    //Mostrar productos en el carrito
+document.getElementById('total-carrito').innerHTML = carritoAcumulado.length + " - $" + totalCarrito;
 
-//mostrar productos en el carrito
-
-const mostrarCarritoActual = () => {
-    alert(`Agregaste \n al carrito`)
 }
-const mostrarProductos = () => {
-    let productosAMostrar = '¿Que computadora desea elegir?\n';
-    productos.forEach(producto => {
-        productosAMostrar += `${producto.id}) ${producto.nombre} - ${producto.precio}\n`
-    })
-    let respuesta = prompt(productosAMostrar);
-    return respuesta;
-}
+let carritoAcumulado =[];
 
-const confirmarCompra = () => {
-    const respuesta = prompt('Desea agragar productos al carrito?');
-    if (respuesta == '1' || respuesta == 'Si' || respuesta == 'SI' || respuesta == 'si') {
-        return true;
-    } else {
-        return false;
+
+
+
+//ordenar por categoria, precio, nombre
+//const ordenarPrecio = productos.filter(producto => producto.precio)
+
+//Ordenar por precio con
+const ordenarPrecio2 = productos.sort((a, b) => {
+    if (a.precio > b.precio) {
+        return 1;
     }
-}
-
-const comprarProducto  = () => {
-    while (confirmarCompra()) {
-        let productoSeleccionado = mostrarProductos();
-        agregarProductoAlCarrito(productoSeleccionado);
-        console.log(carrito);
-        mostrarCarritoActual();
-
+    if (a.precio < b.precio) {
+        return -1;
     }
-}
+    return 0;
+})
 
-comprarProducto();
+
+//console.log(ordenarPrecio)
+console.log(ordenarPrecio2)
+//ordenar por nombre
+
+
+
+//Dom
+//document.getElementById('carrito-total').innerHTML = carrito.reduce;
+
