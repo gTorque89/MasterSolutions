@@ -38,7 +38,6 @@ productos.forEach((producto) => {
         </div>
         <div class="card-footer d-flex justify-content-between bg-light border">
             <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Ver detalle</a>
-            </div
             <a onclick ="agregarProductoAlCarrito(${producto.id})" class="btn btn-sm text-dark p-0" ><i  class="fas fa-shopping-cart text-primary mr-1"></i>Agregar al carrito</a>
     </div>`
 })
@@ -49,7 +48,7 @@ generadorDeCards(productos);
 //Filtrar categoria
 const filtrarPorCategoria = (categoria) => {
     const listadoFiltrado = productos.filter((producto) => producto.categoria == categoria);
-    generadorDeCards(listadoFiltrado);
+    generadorDeCards(listadoFiltrado)
 }
 
 
