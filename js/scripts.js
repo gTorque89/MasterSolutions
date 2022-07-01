@@ -1,7 +1,7 @@
 //Listado de productos
 let productos = [
-    {titulo: 'Laptop DELL', id: 01, precio: 180000, categoria: 'Laptops', stock: 20, imagen: 'img\productsStart\notebookDell.webp'},
-    {titulo: 'Laptop HP', id: 02, precio: 190000, categoria: 'Laptops', stock: 15},
+    {titulo: 'Laptop DELL', id: 01, precio: 180000, categoria: 'Laptops', stock: 20, img: "img/productStart/notebookDell.webp"},
+    {titulo: 'Laptop HP', id: 02, precio: 190000, categoria: 'Laptops', stock: 15, img: '../img/productsStart/notebookHp.jpg'},
     {titulo: 'Laptop Acer', id: 03, precio: 225000, categoria: 'Laptops', stock: 10},
     {titulo: 'Laptop Asus', id: 04, precio: 280000, categoria: 'Laptops', stock: 12},
     {titulo: 'Laptop Lenovo', id: 05, precio: 150000, categoria: 'Laptops', stock: 18},
@@ -29,7 +29,7 @@ productos.forEach((producto) => {
     <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="card product-item border-0 mb-4">
                     <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="img/product-8.jpg" alt="">
+                        <img class="img-fluid w-100" src="${producto.img}" alt="">
                     </div>
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                         <h6 class="text-truncate mb-3">${producto.titulo}</h6>
@@ -62,7 +62,8 @@ productos.forEach((producto) => {
                         <a href="#" class="card-footer-item" id="addItem" data-producto="${carrito.catalogo[i].id}">Agregar al Carrito</a>
                     </div>
                     </div>
-                </div>*/
+                </div>
+                */  
 
 document.getElementById('card-container').innerHTML = acumuladorCardsProductos;
 }
