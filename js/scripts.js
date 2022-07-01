@@ -1,6 +1,6 @@
 //Listado de productos
 let productos = [
-    {titulo: 'Laptop DELL', id: 01, precio: 180000, categoria: 'Laptops', stock: 20},
+    {titulo: 'Laptop DELL', id: 01, precio: 180000, categoria: 'Laptops', stock: 20, imagen: 'img\productsStart\notebookDell.webp'},
     {titulo: 'Laptop HP', id: 02, precio: 190000, categoria: 'Laptops', stock: 15},
     {titulo: 'Laptop Acer', id: 03, precio: 225000, categoria: 'Laptops', stock: 10},
     {titulo: 'Laptop Asus', id: 04, precio: 280000, categoria: 'Laptops', stock: 12},
@@ -38,12 +38,31 @@ productos.forEach((producto) => {
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                        <a href="#" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
                         <a onclick ="agregarProductoAlCarrito(${producto.id})" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                     </div>
                 </div>
-            </div>`
+            </div>
+            `
 })
+
+//otra card
+/*<div class="column is-one-quarter">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="./img/${carrito.catalogo[i].imagen}" alt="Placeholder">
+                    </div>
+                    <div class="card-content">
+                        <h2 class="title is-3">${carrito.catalogo[i].nombre}</h2>
+                        <p>${carrito.catalogo[i].descripcion}</p>
+                        <br>
+                        <h3 class="subtitle is-4">Precio: <strong>$${carrito.catalogo[i].precio}</strong></h3>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="card-footer-item" id="addItem" data-producto="${carrito.catalogo[i].id}">Agregar al Carrito</a>
+                    </div>
+                    </div>
+                </div>*/
 
 document.getElementById('card-container').innerHTML = acumuladorCardsProductos;
 }
@@ -70,7 +89,7 @@ document.getElementById('total-carrito').innerHTML = carritoAcumulado.length + "
 }
 let carritoAcumulado =[];
 
-
+console.log(carritoAcumulado)
 
 
 //ordenar por categoria, precio, nombre

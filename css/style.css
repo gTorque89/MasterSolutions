@@ -106,6 +106,53 @@ dl {
   margin-bottom: 1rem;
 }
 
+.card-submenu {
+  list-style: none;
+}
+
+.borrar-item{
+  background-color: white;
+  border-radius: 50%;
+  padding: 5px 10px;
+  text-decoration: none;
+  color:rgb(71, 71, 71);
+  font-weight: bold;
+}
+
+.submenu {
+  position: relative;
+}
+
+.submenu #carrito{
+  display: none;
+}
+
+.submenu:hover #carrito{
+  display: block;
+  color: white;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  z-index: 1;
+  background: black;
+  padding: 20px;
+}
+
+.vacio {
+  padding:  10px;
+  background-color: #007bff;
+  text-align: center;
+  border-radius: 10px;
+  color: rgb(225, 225, 225);
+
+}
+
+.button-popUp {
+  background-color: #117a8b;
+  color: rgb(225, 225, 225);
+}
+
+
 ol ol,
 ul ul,
 ol ul,
@@ -3484,7 +3531,7 @@ input[type="button"].btn-block {
   display: block;
   min-height: 1.5rem;
   padding-left: 1.5rem;
-  color-adjust: exact;
+  print-color-adjust: exact;
 }
 
 .custom-control-inline {
