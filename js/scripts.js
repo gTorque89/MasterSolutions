@@ -44,7 +44,7 @@ const generadorDeCards = (productoARecorrer) => {
                         </div>
                         <div class="card-footer d-flex justify-content-between bg-light border">
                             <a href="#" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Ver detalle</a>
-                            <a onclick ="agregarProductoAFavoritos(${producto})" class="btn btn-sm text-dark p-0"><i class="fas fa-heart text-primary mr-1"></i>Añadir a favoritos</a>
+                            <a onclick ="agregarProductoAFavoritos(${producto.id})" class="btn btn-sm text-dark p-0"><i class="fas fa-heart text-primary mr-1"></i>Añadir a favoritos</a>
                             <a onclick ="agregarProductoAlCarrito(${producto.id})" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Añadir al carrito</a>
                         </div>
                     </div>
@@ -52,15 +52,35 @@ const generadorDeCards = (productoARecorrer) => {
                 `
     })
     
-    document.getElementById('card-container').innerHTML = acumuladorCardsProductos;
+    document.getElementById('card-container-ofertas').innerHTML = acumuladorCardsProductos;
     }
     generadorDeCards(productos);
-    //Filtrar categoria
+
+//Filtrar categoria
     const filtrarPorCategoria = (categoria) => {
         const listadoFiltrado = productos.filter((producto) => producto.categoria == categoria);
         generadorDeCards(listadoFiltrado)
     }
 
+//Sección agregar a favoritos
+
+
+const agregarProductoAFavoritos = (id) => {
+    let favoritos = JSON.parse(localStorage.getItem('favoritos'))
+    if (favoritos == null) {
+    favoritos = [];
+    }
+    const favoritoSeleccionado = productos.find((producto) => producto.id === id);
+    favoritos.push(favoritoSeleccionado)
+    const listaFavoritos = favoritos.reduce((acumulador, producto) => acumulador + producto, 0);
+    
+    localStorage.setItem('favoritos', JSON.stringify(favoritos))
+
+    
+
+    document.getElementById('total-favoritos').innerHTML = favoritos.length + " - Fav";
+    
+};
 
 //sección carrito
 
@@ -97,4 +117,3 @@ const ordenarPrecio2 = productos.sort((a, b) => {
 
 //console.log(ordenarPrecio)
 console.log(ordenarPrecio2)
-
