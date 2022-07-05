@@ -64,40 +64,32 @@ const generadorDeCards = (productoARecorrer) => {
 
 //Sección agregar a favoritos
 
-
 const agregarProductoAFavoritos = (id) => {
-    let favoritos = JSON.parse(localStorage.getItem('favoritos'))
-    if (favoritos == null) {
-    favoritos = [];
-    }
-    const favoritoSeleccionado = productos.find((producto) => producto.id === id);
-    favoritos.push(favoritoSeleccionado)
-    const listaFavoritos = favoritos.reduce((acumulador, producto) => acumulador + producto, 0);
+    let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+        const favoritoSeleccionado = productos.find((producto) => producto.id === id);
+        favoritos.push(favoritoSeleccionado)
+        const listaFavoritos = favoritos.reduce((acumulador, producto) => acumulador + producto, 0);
     
-    localStorage.setItem('favoritos', JSON.stringify(favoritos))
-
-    
+        localStorage.setItem('favoritos', JSON.stringify(favoritos))
 
     document.getElementById('total-favoritos').innerHTML = favoritos.length + " - Fav";
     
 };
 
-//sección carrito
-
-
-
-
 const agregarProductoAlCarrito = (id) => {
+    let carritoAcumulado = JSON.parse(localStorage.getItem('carrito')) || [];
+
     const productoSeleccionado = productos.find((producto) => producto.id === id);
     carritoAcumulado.push(productoSeleccionado)
     const totalCarrito = carritoAcumulado.reduce((acumulador, producto) => acumulador + producto.precio, 0);
-    //Mostrar productos en el carrito
+
+    localStorage.setItem('carrito', JSON.stringify(carritoAcumulado))
+
 document.getElementById('total-carrito').innerHTML = carritoAcumulado.length + " - $" + totalCarrito;
 
-}
-let carritoAcumulado =[];
 
-console.log(carritoAcumulado)
+}
+
 
 
 //ordenar por categoria, precio, nombre
