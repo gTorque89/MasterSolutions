@@ -1,6 +1,7 @@
-//Declaración de variables globales
 
-let stockDeProductos = []
+//Declaración de variables globales
+const carritoAcumulado = JSON.parse(localStorage.getItem('carrito')) || [];
+const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
 
 //Listado de productos
 let productos = [
@@ -24,7 +25,7 @@ let productos = [
     {titulo: 'Pc Oficina Ryzen 3', id: 18, precio: 130200, categoria: 'Desktop', stock: 25, img: './img/productsStart/notebookHp.jpg', descuento: 7}
 
 ];
-
+//Generador de cards index
 const generadorDeCards = (productoARecorrer) => {
     let acumuladorCardsProductos = ``;
     productos.forEach((producto) => {
@@ -52,21 +53,46 @@ const generadorDeCards = (productoARecorrer) => {
     
     document.getElementById('card-container-ofertas').innerHTML = acumuladorCardsProductos;
 }
-    generadorDeCards(productos);
+    generadorDeCards();
 
 
 
 //Filtrar categoria
     
-const filtrarPorCategoria = (categoria) => {
-        const listadoFiltrado = productos.filter((producto) => producto.categoria == categoria);
-        generadorDeCards(listadoFiltrado)
-    }
+const obtenerProductosPorCategoria = (categoria) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const productosParaResolver = productos.filter((producto) => producto.categoria === categoria);
+            resolve(productosParaResolver)
+        }, 2000)
+    })
+} 
+
+obtenerProductosPorCategoria('Laptops').then((productos) => {
+    const nuevoListadoFiltrado = productos;
+    generadorDeCards(nuevoListadoFiltrado)
+})
 
 //Sección agregar a favoritos
+function popUpAgregasteAFavoritos () {
+    Toastify({
+        text: "Agregaste tu proxima compra a favoritos ",
+        duration: 3000,
+        destination: "",
+        newWindow: true,
+        close: true,
+        gravity: "bottom", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+        background: "linear-gradient(to right, #419ebe, #212529)",
+        },
+        onClick: function(){} // Callback after click
+    }).showToast();
+}
 
 const agregarProductoAFavoritos = (id) => {
-    let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+    
         const favoritoSeleccionado = productos.find((producto) => producto.id === id);
         favoritos.push(favoritoSeleccionado)
         const listaFavoritos = favoritos.reduce((acumulador, producto) => acumulador + producto, 0);
@@ -74,103 +100,105 @@ const agregarProductoAFavoritos = (id) => {
         localStorage.setItem('favoritos', JSON.stringify(favoritos))
 
     document.getElementById('total-favoritos').innerHTML = favoritos.length + " - Fav";
-    function popUpAgregasteAFavoritos () {
-        Toastify({
-            text: "Agregaste tu proxima compra a favoritos ",
-            duration: 3000,
-            destination: "",
-            newWindow: true,
-            close: true,
-            gravity: "bottom", // `top` or `bottom`
-            position: "right", // `left`, `center` or `right`
-            stopOnFocus: true, // Prevents dismissing of toast on hover
-            style: {
-            background: "linear-gradient(to right, #419ebe, #212529)",
-            },
-            onClick: function(){} // Callback after click
-        }).showToast();
-    }
+    
     popUpAgregasteAFavoritos()
 };
 //Sección agregar al carrito
-function agregarProductoAlCarrito(id) {
-    let carritoAcumulado = JSON.parse(localStorage.getItem('carrito')) || [];
 
+function popUpAgregasteAlCarrito () {
+    Toastify({
+        text: "Agregaste un producto al carrito",
+        duration: 3000,
+        destination: "",
+        newWindow: true,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+        background: "linear-gradient(to right, #419ebe, #212529)",
+        },
+        onClick: function(){} // Callback after click
+    }).showToast();
+}
+
+function agregarProductoAlCarrito(id) {
     const productoSeleccionado = productos.find((producto) => producto.id === id);
     carritoAcumulado.push(productoSeleccionado)
-    const subtotalCarrito = carritoAcumulado.reduce((acumulador, producto) => acumulador + producto.precio, 0);
-    const totalCarrito = carritoAcumulado.reduce((acumulador, producto) => acumulador + producto.precio, 500);
+    
     
     localStorage.setItem('carrito', JSON.stringify(carritoAcumulado))
 
-    document.getElementById('total-carrito').innerHTML = carritoAcumulado.length + " - $" + totalCarrito;
-    document.getElementById('subtotal-carrito').innerHTML = carritoAcumulado.length + " - $" + subtotalCarrito;
-    document.getElementById('total-carrito-modal').innerHTML = carritoAcumulado.length + " - $" + totalCarrito;
     
-    function popUpAgregasteAlCarrito () {
-        Toastify({
-            text: "Agregaste un producto al carrito",
-            duration: 3000,
-            destination: "",
-            newWindow: true,
-            close: true,
-            gravity: "top", // `top` or `bottom`
-            position: "right", // `left`, `center` or `right`
-            stopOnFocus: true, // Prevents dismissing of toast on hover
-            style: {
-            background: "linear-gradient(to right, #419ebe, #212529)",
-            },
-            onClick: function(){} // Callback after click
-        }).showToast();
-
-        
-    }
+    
     popUpAgregasteAlCarrito()
+    actualizarDom()  
+}
+function actualizarDom() {
+    const subtotalCarrito = carritoAcumulado.reduce((acumulador, producto) => acumulador + producto.precio, 0);
+    const totalCarrito = carritoAcumulado.reduce((acumulador, producto) => acumulador + producto.precio, 500);
+    document.getElementById('subtotal-carrito').innerHTML = " $" + subtotalCarrito;
+    document.getElementById('total-carrito-modal').innerHTML = " $" + totalCarrito;
+    document.getElementById('total-carrito').innerHTML = carritoAcumulado.length + " - $" + subtotalCarrito;
+}   
+    actualizarDom()
 
+
+    //Función para cargar cards en el modal 
+
+/*function eliminarItemDeCarrito(id) {
+    const productoSeleccionado = carritoAcumulado.findIndex((producto) => producto.id === id);
+    carritoAcumulado.splice(productoSeleccionado, 1); 
+    const totalCarrito = carritoAcumulado.reduce((acumulador, producto) => acumulador - producto.precio, 0);
     
-    function cardsCarrito()  {
-        let acumuladorCardsModal = ``;
-        carritoAcumulado.forEach((producto) => {
-        acumuladorCardsModal += `              
-                            <tr>
-                                <td class="align-middle"><img src="${producto.img}" alt="${producto.titulo}" style="width: 50px;">${producto.titulo}</td>
-                                <td class="align-middle">$${producto.precio}</td>
-                                <td class="align-middle"><button onclick ="eliminarItemDeCarrito(${producto.id})" id="eliminar-item" class="btn btn-sm btn-primary" id="eliminar-item" ><i class="fa fa-times"></i></button></td>
-                            </tr>
-                            `
-        
-            
-        
-        document.getElementById('tarjeta-detalle').innerHTML = acumuladorCardsModal;
+    actualizarDom()
+    cardsCarrito()
+}*/
+const eliminarItemDeCarrito = (id) => {
 
-        })
-        
-        
-    }
-    
+    const productoSeleccionado = carritoAcumulado.findIndex((producto) => producto.id === id);
+    carritoAcumulado.splice(productoSeleccionado, 1);
+    const totalCarrito = carritoAcumulado.reduce((acumulador, producto) => acumulador - producto.precio, 0);
+    document.getElementById('total-carrito').innerHTML = carritoAcumulado.length + " - $" + totalCarrito;
+    console.log(carritoAcumulado);
 
-    cardsCarrito(carritoAcumulado)
-
-    const eliminarItemDeCarrito = (id) => {
-        const productoSeleccionado = carritoAcumulado.find((producto) => producto.id === id);
-        carritoAcumulado.splice(productoSeleccionado); 
-        const totalCarrito = carritoAcumulado.reduce((acumulador, producto) => acumulador - producto.precio, 0);
-        document.getElementById('total-carrito').innerHTML = carritoAcumulado.length + " - $" + totalCarrito;
-        
-        const btnEliminarItemDeCarrito = document.getElementById('eliminar-item');
-        btnEliminarItemDeCarrito.onclick = () => {
-            eliminarItemDeCarrito(id)
-        };
-        
-    }    
+    const btnEliminarItemDeCarrito = document.getElementById('eliminar-item');
+    btnEliminarItemDeCarrito.onclick = () => {
+        eliminarItemDeCarrito(id)
+    };
+    cardsCarrito()
+    actualizarDom()
+    cardsCarrito()
 }
 
+function cardsCarrito() {
+    let acumuladorCardsModal = ``;
+    carritoAcumulado.forEach((producto) => {
+    acumuladorCardsModal += `              
+                        <tr>
+                            <td class="align-middle"><img src="${producto.img}" alt="${producto.titulo}" style="width: 50px;">${producto.titulo}</td>
+                            <td class="align-middle">$${producto.precio}</td>
+                            <td class="align-middle"><button  onclick="eliminarItemDeCarrito(${producto.id}) "id="eliminar-item" class="btn btn-sm btn-primary" id="eliminar-item" ><i class="fa fa-times"></i></button></td>
+                        </tr>
+                        `
+    //DOM cards de modal                  
+    document.getElementById('tarjeta-detalle').innerHTML = acumuladorCardsModal;
+    const btnEliminarItemDeCarrito = document.getElementById('eliminar-item');
+    
+    btnEliminarItemDeCarrito.onclick = () => {
+        eliminarItemDeCarrito()
+    };   
+    })
+}
+cardsCarrito(carritoAcumulado)
+
+
+
 
 
     
 
-//Modal
-
+//Abrir modal
     const btnAbrirModal = document.getElementById('abrir-modal');
     const btnCerrarModal = document.getElementById('cerrar-modal');
     const modal = document.getElementById('modal-carrito');
@@ -179,22 +207,21 @@ function agregarProductoAlCarrito(id) {
 
     btnAbrirModal.addEventListener("click", () => {
         modal.showModal();
+        actualizarDom()
+        cardsCarrito(carritoAcumulado)
     })
 
     btnCerrarModal.addEventListener('click', () => {
         modal.close();
     })
-    
 
 
 
 
 
 
-//const ordenarPrecio = productos.filter(producto => producto.precio)
-
-//Ordenar por precio con
-const ordenarPrecio2 = productos.sort((a, b) => {
+function ordenarPrecio() {
+const ordenarPorPrecio = productos.sort((a, b) => {
     if (a.precio > b.precio) {
         return 1;
     }
@@ -203,7 +230,8 @@ const ordenarPrecio2 = productos.sort((a, b) => {
     }
     return 0;
 })
-
-
-//console.log(ordenarPrecio)
-console.log(ordenarPrecio2)
+}
+const btnOrdenarPrecio = document.getElementById('ordenar-precio');
+        btnOrdenarPrecio.onclick = () => {
+            ordenarPrecio()
+        };    
