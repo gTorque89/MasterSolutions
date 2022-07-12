@@ -13,14 +13,14 @@ let productos = [
     {titulo: 'Laptop Exo', id: 06, precio: 175000, categoria: 'Laptops', stock: 15, img: './img/productsStart/notebookExo.webp', descuento: 8},
     {titulo: 'Laptop Banghó', id: 07, precio: 240000, categoria: 'Laptops', stock: 25, img: './img/productsStart/notebookBangho.jpg', descuento: 9},
     {titulo: 'Laptop Alienware', id: 08, precio: 320000, categoria: 'Laptops', stock: 10, img: './img/productsStart/notebookAlienware.jpg', descuento: 12},
-    {titulo: 'Tablet Atom', id: 09, precio: 20000, categoria: 'Tablets', stock: 8, img: './img/productsStart/notebookHp.jpg', descuento: 2},
-    {titulo: 'Tablet DELL', id: 10, precio: 15000, categoria: 'Tablets', stock: 10, img: './img/productsStart/notebookHp.jpg', descuento: 10},
-    {titulo: 'Tablet Lenovo', id: 11, precio: 18000, categoria: 'Tablets', stock: 10, img: './img/productsStart/notebookHp.jpg', descuento: 7},
-    {titulo: 'Tablet Samsung', id: 12, precio: 15000, categoria: 'Tablets', stock: 6, img: './img/productsStart/notebookHp.jpg', descuento: 4},
-    {titulo: 'Tablet Exo', id : 13, precio: 18500, categoria: 'Tablets', stock: 18, img: './img/productsStart/notebookHp.jpg', descuento: 15}, 
-    {titulo: 'Tablet Samsung Tab', id: 14, precio: 17000, categoria: 'Tablets', stock: 14, img: './img/productsStart/notebookHp.jpg', descuento: 16},
-    {titulo: 'Tablet Asus', id: 15, precio: 25000, categoria: 'Tablets', stock: 7, img: './img/productsStart/notebookHp.jpg', descuento: 2},
-    {titulo: 'Tablet Banghó', id: 16, precio: 13000, categoria: 'Tablets', stock: 25, img: './img/productsStart/notebookHp.jpg', descuento: 8},
+    {titulo: 'Tablet Atom', id: 09, precio: 20000, categoria: 'Tablets', stock: 8, img: './img/productsStart/tabletAtom.jpg', descuento: 2},
+    {titulo: 'Tablet DELL', id: 10, precio: 15000, categoria: 'Tablets', stock: 10, img: './img/productsStart/tabletDell.jpg', descuento: 10},
+    {titulo: 'Tablet Lenovo', id: 11, precio: 18000, categoria: 'Tablets', stock: 10, img: './img/productsStart/tabletLenovo.jpg', descuento: 7},
+    {titulo: 'Tablet Samsung', id: 12, precio: 15000, categoria: 'Tablets', stock: 6, img: './img/productsStart/tabletSamsung.jpg', descuento: 4},
+    {titulo: 'Tablet Exo', id : 13, precio: 18500, categoria: 'Tablets', stock: 18, img: './img/productsStart/tabletExo.jpg', descuento: 15}, 
+    {titulo: 'Tablet Samsung Tab', id: 14, precio: 17000, categoria: 'Tablets', stock: 14, img: './img/productsStart/tablet-galaxy.png', descuento: 16},
+    {titulo: 'Tablet Asus', id: 15, precio: 25000, categoria: 'Tablets', stock: 7, img: './img/productsStart/tabletAsus.jpeg', descuento: 2},
+    {titulo: 'Tablet Banghó', id: 16, precio: 13000, categoria: 'Tablets', stock: 25, img: './img/productsStart/tabletBangho.jpg', descuento: 8},
     {titulo: 'Pc Gamer Ryzen 5', id: 17, precio: 255000, categoria: 'Desktop', stock: 7, img: './img/productsStart/notebookHp.jpg', descuento: 4},
     {titulo: 'Pc Oficina Ryzen 3', id: 18, precio: 130200, categoria: 'Desktop', stock: 25, img: './img/productsStart/notebookHp.jpg', descuento: 7}
 
@@ -103,6 +103,7 @@ const agregarProductoAFavoritos = (id) => {
     
     popUpAgregasteAFavoritos()
 };
+
 //Sección agregar al carrito
 
 function popUpAgregasteAlCarrito () {
@@ -126,14 +127,12 @@ function agregarProductoAlCarrito(id) {
     const productoSeleccionado = productos.find((producto) => producto.id === id);
     carritoAcumulado.push(productoSeleccionado)
     
-    
     localStorage.setItem('carrito', JSON.stringify(carritoAcumulado))
 
-    
-    
     popUpAgregasteAlCarrito()
     actualizarDom()  
 }
+
 function actualizarDom() {
     const subtotalCarrito = carritoAcumulado.reduce((acumulador, producto) => acumulador + producto.precio, 0);
     const totalCarrito = carritoAcumulado.reduce((acumulador, producto) => acumulador + producto.precio, 500);
@@ -146,26 +145,18 @@ function actualizarDom() {
 
     //Función para cargar cards en el modal 
 
-/*function eliminarItemDeCarrito(id) {
-    const productoSeleccionado = carritoAcumulado.findIndex((producto) => producto.id === id);
-    carritoAcumulado.splice(productoSeleccionado, 1); 
-    const totalCarrito = carritoAcumulado.reduce((acumulador, producto) => acumulador - producto.precio, 0);
-    
-    actualizarDom()
-    cardsCarrito()
-}*/
 const eliminarItemDeCarrito = (id) => {
 
     const productoSeleccionado = carritoAcumulado.findIndex((producto) => producto.id === id);
     carritoAcumulado.splice(productoSeleccionado, 1);
     const totalCarrito = carritoAcumulado.reduce((acumulador, producto) => acumulador - producto.precio, 0);
     document.getElementById('total-carrito').innerHTML = carritoAcumulado.length + " - $" + totalCarrito;
-    console.log(carritoAcumulado);
 
     const btnEliminarItemDeCarrito = document.getElementById('eliminar-item');
     btnEliminarItemDeCarrito.onclick = () => {
         eliminarItemDeCarrito(id)
     };
+    localStorage.setItem('carrito', JSON.stringify(carritoAcumulado))
     cardsCarrito()
     actualizarDom()
     cardsCarrito()
@@ -191,12 +182,6 @@ function cardsCarrito() {
     })
 }
 cardsCarrito(carritoAcumulado)
-
-
-
-
-
-    
 
 //Abrir modal
     const btnAbrirModal = document.getElementById('abrir-modal');
@@ -235,3 +220,4 @@ const btnOrdenarPrecio = document.getElementById('ordenar-precio');
         btnOrdenarPrecio.onclick = () => {
             ordenarPrecio()
         };    
+const listadoOrdenado =[];
