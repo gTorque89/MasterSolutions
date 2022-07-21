@@ -30,7 +30,7 @@
         "precio": 280000,
         "categoria": "Laptops",
         "img": ".img/productStart/notebookAsus.webp",
-        "cantidad": 12
+        "stock": 12
     },
     {
         "id": 5,
@@ -38,7 +38,7 @@
         "precio": 170000,
         "categoria": "Laptops",
         "img": ".img/productStart/notebookLenovo.jpg",
-        "cantidad": 22
+        "stock": 22
     },
     {
         "id": 6,
@@ -46,7 +46,7 @@
         "precio": 150000,
         "categoria": "Laptops",
         "img": ".img/productStart/notebookExo.webp",
-        "cantidad": 20
+        "stock": 20
     },
     {
         "id": 7,
@@ -54,7 +54,7 @@
         "precio": 180000,
         "categoria": "Laptops",
         "img": ".img/productStart/notebookBangho.jpg",
-        "cantidad": 20
+        "stock": 20
     },
     {
         "id": 8,
@@ -62,103 +62,103 @@
         "precio": 325000,
         "categoria": "Laptops",
         "img": ".img/productStart/notebookAlienware.jpg",
-        "cantidad": 20
+        "stock": 20
     },
     {
         "id": 9,
         "titulo": "PC Gamer AMD Ryzen 5",
         "precio": 180000,
         "categoria": "Desktop",
-        "img": ".img/productStart/notebookDell.webp",
-        "cantidad": 2
+        "img": ".img/productStart/amdRyzen5.jpeg",
+        "stock": 2
     },
     {
         "id": 10,
         "titulo": "PC Gamer Intel Core I7",
         "precio": 190000,
         "categoria": "Desktop",
-        "img": ".img/productStart/notebookDell.webp",
-        "cantidad": 3
+        "img": ".img/productStart/intelCore711.webp",
+        "stock": 3
     },
     {
         "id": 11,
         "titulo": "PC Gamer AMD Ryzen 7",
         "precio": 200000,
         "categoria": "Desktop",
-        "img": ".img/productStart/notebookDell.webp",
-        "cantidad": 4
+        "img": ".img/productStart/amdRyzen7.jpeg",
+        "stock": 4
     },
     {
         "id": 12,
-        "titulo": "PC Intel Core I7 Duo",
+        "titulo": "PC Intel Core I7 11 Gen",
         "precio": 180000,
         "categoria": "Desktop",
-        "img": ".img/productStart/notebookDell.webp",
-        "cantidad": 1
+        "img": ".img/productStart/intelCore7.webp",
+        "stock": 1
     },
     {
         "id": 13,
-        "titulo": "Tablet Samsung Tab",
+        "titulo": "Tablet Atom",
         "precio": 17000,
         "categoria": "Tablets",
-        "img": ".img/productStart/notebookDell.webp",
-        "cantidad": 18
+        "img": ".img/productStart/tabletAtom.jpg",
+        "stock": 18
     },
     {
         "id": 14,
-        "titulo": "Tablet Lenovo MAX",
+        "titulo": "Tablet Dell",
         "precio": 11000,
         "categoria": "Tablets",
-        "img": ".img/productStart/notebookDell.webp",
-        "cantidad": 17
+        "img": ".img/productStart/tabletDell.jpg",
+        "stock": 17
     },
     {
         "id": 15,
         "titulo": "Tablet Lenovo Vulcan",
         "precio": 80000,
         "categoria": "Tablets",
-        "img": ".img/productStart/notebookDell.webp",
-        "cantidad": 12
+        "img": ".img/productStart/tabletLenovo.jpg",
+        "stock": 12
     },
     {
         "id": 16,
         "titulo": "Tablet Samsung Discover",
         "precio": 25000,
         "categoria": "Tablets",
-        "img": ".img/productStart/notebookDell.webp",
-        "cantidad": 7
+        "img": ".img/productStart/tabletSamsung.jpg",
+        "stock": 7
     },
     {
         "id": 17,
-        "titulo": "Tablet Asus Zenbook",
+        "titulo": "Tablet Exo",
         "precio": 45000,
         "categoria": "Tablets",
-        "img": ".img/productStart/notebookDell.webp",
-        "cantidad": 5
+        "img": ".img/productStart/tabletExo.jpg",
+        "stock": 5
     },
     {
         "id": 18,
-        "titulo": "Laptop DELL",
+        "titulo": "Laptop Asus",
         "precio": 180000,
         "categoria": "Tablets",
-        "img": ".img/productStart/notebookDell.webp",
-        "cantidad": 12 
+        "img": ".img/productStart/tabletAsus.jpeg",
+        "stock": 12 
     },
     {
         "id": 19,
-        "titulo": "Tablet Toshiba",
+        "titulo": "Tablet Banghó",
         "precio": 80000,
         "categoria": "Tablets",
-        "img": ".img/productStart/notebookDell.webp",
-        "cantidad": 14
+        "img": ".img/productStart/tabletBangho.jpg",
+        "stock": 14
     },
     {
         "id": 20,
-        "titulo": "Tablet Onix",
+        "titulo": "Tablet Samsung Onix",
         "precio": 66000,
         "categoria": "Tablets",
-        "img": ".img/productStart/notebookDell.webp",
-        "cantidad": 9
+        "img": ".img/productStart/tablet-galaxy.png",
+        "stock": 9
     }
 
 ]

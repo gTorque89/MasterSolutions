@@ -81,10 +81,36 @@
                 </form>
             </div>
             <div class="col-lg-3 col-6 text-right">
-                <a href="" class="btn border" id="ver-favoritos">
+                <a  class="btn border" id="abrir-favoritos">
                     <i class="fas fa-heart text-primary"></i>
                     <span class="badge" id="total-favoritos">0</span>
                 </a>
+                <dialog id="modal-favoritos" class="">
+                    <div class="modal-header">
+                        <h3>Tus favoritos</h3>
+                        <button class="btn btn-sm btn-primary" id="cerrar-modal-favoritos"><i class="fa fa-times"></i></button>
+                    </div>
+                    <section class="modal-content">
+                        <div class="container-fluid pt-5">
+                            <div class="row px-xl-5">
+                                <div class="col-lg-8 table-responsive mb-5">
+                                    <table class="table table-bordered text-center mb-0">
+                                        <thead class="bg-secondary text-dark">
+                                            <tr>
+                                                <th>Productos</th>
+                                                <th>Precio</th>
+                                                <th>Eliminar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="align-items-start" id="tarjeta-detalle-favoritos">
+                                                
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </dialog>
                 <a class="btn border" id="abrir-modal">
                     <i class="fas fa-shopping-cart text-primary"></i>
                     <span class="badge " id="total-carrito">0</span>
@@ -146,7 +172,7 @@
                                 </div>
                             </div>
                         </div>
-                    </section>
+                </section>
             </dialog>
         </div>
     </div>
@@ -317,7 +343,7 @@
     <div class="container-fluid pt-5">
         <div class="text-center mb-4">
             <h2 class="section-title px-5"><span class="px-2">Productos en oferta</span></h2>
-            <button id="ordenar-precio" onclick="ordenarPrecio()">Ordenar por precio</button>
+            <button id="mostrar-productos">Mostrar productos</button>
         </div>
         <div class="row px-xl-5 pb-3" id="card-container-ofertas">
 
