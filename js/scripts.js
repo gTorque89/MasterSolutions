@@ -3,58 +3,6 @@
 const carritoAcumulado = JSON.parse(localStorage.getItem('carrito')) || [];
 const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
 let productos = [];
-/*//Listado de productos
-let productos = [
-    {titulo: 'Laptop DELL', id: 01, precio: 180000, categoria: 'Laptops', stock: 20, img: "./img/productsStart/notebookDell.webp", descuento: 8},
-    {titulo: 'Laptop HP', id: 02, precio: 190000, categoria: 'Laptops', stock: 15, img: './img/productsStart/notebookHp.jpg', descuento: 5},
-    {titulo: 'Laptop Lenovo', id: 05, precio: 150000, categoria: 'Laptops', stock: 18, img: './img/productsStart/notebookLenovo.jpg', descuento: 4},
-    {titulo: 'Laptop Exo', id: 06, precio: 175000, categoria: 'Laptops', stock: 15, img: './img/productsStart/notebookExo.webp', descuento: 8},
-    {titulo: 'Laptop Banghó', id: 07, precio: 240000, categoria: 'Laptops', stock: 25, img: './img/productsStart/notebookBangho.jpg', descuento: 9},
-    {titulo: 'Laptop Alienware', id: 08, precio: 320000, categoria: 'Laptops', stock: 10, img: './img/productsStart/notebookAlienware.jpg', descuento: 12},
-    {titulo: 'Laptop Alienware', id: 08, precio: 320000, categoria: 'Laptops', stock: 10, img: './img/productsStart/notebookAlienware.jpg', descuento: 12},
-    {titulo: 'Tablet Atom', id: 09, precio: 20000, categoria: 'Tablets', stock: 8, img: './img/productsStart/notebookHp.jpg', descuento: 2},
-    {titulo: 'Tablet DELL', id: 10, precio: 15000, categoria: 'Tablets', stock: 10, img: './img/productsStart/notebookHp.jpg', descuento: 10},
-    {titulo: 'Tablet Lenovo', id: 11, precio: 18000, categoria: 'Tablets', stock: 10, img: './img/productsStart/notebookHp.jpg', descuento: 7},
-    {titulo: 'Tablet Samsung', id: 12, precio: 15000, categoria: 'Tablets', stock: 6, img: './img/productsStart/notebookHp.jpg', descuento: 4},
-    {titulo: 'Tablet Exo', id : 13, precio: 18500, categoria: 'Tablets', stock: 18, img: './img/productsStart/notebookHp.jpg', descuento: 15}, 
-    {titulo: 'Tablet Samsung Tab', id: 14, precio: 17000, categoria: 'Tablets', stock: 14, img: './img/productsStart/notebookHp.jpg', descuento: 16},
-    {titulo: 'Tablet Asus', id: 15, precio: 25000, categoria: 'Tablets', stock: 7, img: './img/productsStart/notebookHp.jpg', descuento: 2},
-    {titulo: 'Tablet Banghó', id: 16, precio: 13000, categoria: 'Tablets', stock: 25, img: './img/productsStart/notebookHp.jpg', descuento: 8},
-    {titulo: 'Pc Gamer Ryzen 5', id: 17, precio: 255000, categoria: 'Desktop', stock: 7, img: './img/productsStart/notebookHp.jpg', descuento: 4},
-    {titulo: 'Pc Oficina Ryzen 3', id: 18, precio: 130200, categoria: 'Desktop', stock: 25, img: './img/productsStart/notebookHp.jpg', descuento: 7}
-
-];
-//Generador de cards index
-const generadorDeCards = (productoARecorrer) => {
-    let acumuladorCardsProductos = ``;
-    productos.forEach((producto) => {
-        acumuladorCardsProductos += `
-        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                    <div class="card product-item border-0 mb-4">
-                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <img class="img-fluid w-100" src="${producto.img}" alt="${producto.titulo}">
-                        </div>
-                        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                            <h6 class="text-truncate mb-3">${producto.titulo}</h6>
-                            <div class="d-flex justify-content-center">
-                                <h6>${producto.precio}</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                            </div>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between bg-light border">
-                            <a href="detail.html" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Ver detalle</a>
-                            <a onclick ="agregarProductoAFavoritos(${producto.id})" class="btn btn-sm text-dark p-0"><i class="fas fa-heart text-primary mr-1"></i>Añadir a favoritos</a>
-                            <a onclick ="agregarProductoAlCarrito(${producto.id})" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Añadir al carrito</a>
-                        </div>
-                    </div>
-                </div>
-                `
-    })
-
-    document.getElementById('card-container-ofertas').innerHTML = acumuladorCardsProductos;
-}
-    generadorDeCards();
-*/
-
 
 //Listado de productos
 
@@ -74,7 +22,6 @@ function mostrarProductos(productos) {
     listado.innerHTML = "";
     
     productos.forEach((producto) => {
-        const { titulo, precio, img, id } = producto;
         const productoHTML = `
         <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                     <div class="card product-item border-0 mb-4">

@@ -5,7 +5,7 @@
         "titulo": "Laptop DELL",
         "precio": 180000,
         "categoria": "Laptops",
-        "img": ".img/productStart/notebookDell.webp",
+        "img": "./img/productsStart/notebookDell.webp",
         "stock": 10
     },
     {
@@ -13,7 +13,7 @@
         "titulo": "Laptop HP",
         "precio": 190000,
         "categoria": "Laptops",
-        "img": ".img/productsStart/notebookHp.jpg",
+        "img": "./img/productsStart/notebookHp.jpg",
         "stock": 15
     },
     {
@@ -21,7 +21,7 @@
         "titulo": "Laptop Acer",
         "precio": 225000,
         "categoria": "Laptops",
-        "img": ".img/productStart/notebookAcer.webp",
+        "img": "./img/productsStart/notebookAcer.webp",
         "stock": 18
     },
     {
@@ -29,7 +29,7 @@
         "titulo": "Laptop Asus",
         "precio": 280000,
         "categoria": "Laptops",
-        "img": ".img/productStart/notebookAsus.webp",
+        "img": "./img/productsStart/notebookAsus.webp",
         "stock": 12
     },
     {
@@ -37,7 +37,7 @@
         "titulo": "Laptop Lenovo",
         "precio": 170000,
         "categoria": "Laptops",
-        "img": ".img/productStart/notebookLenovo.jpg",
+        "img": "./img/productsStart/notebookLenovo.jpg",
         "stock": 22
     },
     {
@@ -45,7 +45,7 @@
         "titulo": "Laptop Exo",
         "precio": 150000,
         "categoria": "Laptops",
-        "img": ".img/productStart/notebookExo.webp",
+        "img": "./img/productsStart/notebookExo.webp",
         "stock": 20
     },
     {
@@ -53,7 +53,7 @@
         "titulo": "Laptop Banghó",
         "precio": 180000,
         "categoria": "Laptops",
-        "img": ".img/productStart/notebookBangho.jpg",
+        "img": "./img/productsStart/notebookBangho.jpg",
         "stock": 20
     },
     {
@@ -61,7 +61,7 @@
         "titulo": "Laptop Alienware",
         "precio": 325000,
         "categoria": "Laptops",
-        "img": ".img/productStart/notebookAlienware.jpg",
+        "img": "./img/productsStart/notebookAlienware.jpg",
         "stock": 20
     },
     {
@@ -69,7 +69,7 @@
         "titulo": "PC Gamer AMD Ryzen 5",
         "precio": 180000,
         "categoria": "Desktop",
-        "img": ".img/productStart/amdRyzen5.jpeg",
+        "img": "./img/productsStart/amdRyzen5.jpeg",
         "stock": 2
     },
     {
@@ -77,7 +77,7 @@
         "titulo": "PC Gamer Intel Core I7",
         "precio": 190000,
         "categoria": "Desktop",
-        "img": ".img/productStart/intelCore711.webp",
+        "img": "./img/productsStart/intelCore711.webp",
         "stock": 3
     },
     {
@@ -85,7 +85,7 @@
         "titulo": "PC Gamer AMD Ryzen 7",
         "precio": 200000,
         "categoria": "Desktop",
-        "img": ".img/productStart/amdRyzen7.jpeg",
+        "img": "./img/productsStart/amdRyzen7.jpeg",
         "stock": 4
     },
     {
@@ -93,7 +93,7 @@
         "titulo": "PC Intel Core I7 11 Gen",
         "precio": 180000,
         "categoria": "Desktop",
-        "img": ".img/productStart/intelCore7.webp",
+        "img": "./img/productsStart/intelCore7.webp",
         "stock": 1
     },
     {
@@ -101,7 +101,7 @@
         "titulo": "Tablet Atom",
         "precio": 17000,
         "categoria": "Tablets",
-        "img": ".img/productStart/tabletAtom.jpg",
+        "img": "./img/productsStart/tabletAtom.jpg",
         "stock": 18
     },
     {
@@ -109,7 +109,7 @@
         "titulo": "Tablet Dell",
         "precio": 11000,
         "categoria": "Tablets",
-        "img": ".img/productStart/tabletDell.jpg",
+        "img": "./img/productsStart/tabletDell.jpg",
         "stock": 17
     },
     {
@@ -117,7 +117,7 @@
         "titulo": "Tablet Lenovo Vulcan",
         "precio": 80000,
         "categoria": "Tablets",
-        "img": ".img/productStart/tabletLenovo.jpg",
+        "img": "./img/productsStart/tabletLenovo.jpg",
         "stock": 12
     },
     {
@@ -125,7 +125,7 @@
         "titulo": "Tablet Samsung Discover",
         "precio": 25000,
         "categoria": "Tablets",
-        "img": ".img/productStart/tabletSamsung.jpg",
+        "img": "./img/productsStart/tabletSamsung.jpg",
         "stock": 7
     },
     {
@@ -133,7 +133,7 @@
         "titulo": "Tablet Exo",
         "precio": 45000,
         "categoria": "Tablets",
-        "img": ".img/productStart/tabletExo.jpg",
+        "img": "./img/productsStart/tabletExo.jpg",
         "stock": 5
     },
     {
@@ -141,7 +141,7 @@
         "titulo": "Laptop Asus",
         "precio": 180000,
         "categoria": "Tablets",
-        "img": ".img/productStart/tabletAsus.jpeg",
+        "img": "./img/productsStart/tabletAsus.jpeg",
         "stock": 12 
     },
     {
@@ -149,7 +149,7 @@
         "titulo": "Tablet Banghó",
         "precio": 80000,
         "categoria": "Tablets",
-        "img": ".img/productStart/tabletBangho.jpg",
+        "img": "./img/productsStart/tabletBangho.jpg",
         "stock": 14
     },
     {
@@ -157,8 +157,9 @@
         "titulo": "Tablet Samsung Onix",
         "precio": 66000,
         "categoria": "Tablets",
-        "img": ".img/productStart/tablet-galaxy.png",
+        "img": "./img/productsStart/tablet-galaxy.png",
         "stock": 9
     }
 
 ]
+
