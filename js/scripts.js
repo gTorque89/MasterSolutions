@@ -2,8 +2,8 @@
 //Declaración de variables globales
 const carritoAcumulado = JSON.parse(localStorage.getItem('carrito')) || [];
 const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-
-//Listado de productos
+let productos = [];
+/*//Listado de productos
 let productos = [
     {titulo: 'Laptop DELL', id: 01, precio: 180000, categoria: 'Laptops', stock: 20, img: "./img/productsStart/notebookDell.webp", descuento: 8},
     {titulo: 'Laptop HP', id: 02, precio: 190000, categoria: 'Laptops', stock: 15, img: './img/productsStart/notebookHp.jpg', descuento: 5},
@@ -53,17 +53,17 @@ const generadorDeCards = (productoARecorrer) => {
     document.getElementById('card-container-ofertas').innerHTML = acumuladorCardsProductos;
 }
     generadorDeCards();
+*/
 
 
-
-/*//Listado de productos
+//Listado de productos
 
 const API_URL = './productos.json';
 async function obtenerProductos() {
     productos = await fetch(API_URL)
     .then((response) => response.json())
     .then((data) => data);
-    productos = data;
+    return productos;
 
 }
 
@@ -107,7 +107,7 @@ function escuchadorBotonMostrarProductos() {
 }
 escuchadorBotonMostrarProductos();
 
-*/
+
 
 /*//Filtrar categoria
     
