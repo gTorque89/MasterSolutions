@@ -152,6 +152,11 @@ dl {
   color: rgb(225, 225, 225);
 }
 
+.style-button{
+  text-decoration: none;
+  text-decoration-color: #000;
+}
+
 
 ol ol,
 ul ul,

@@ -1,7 +1,7 @@
 //Declaración de variables globales
 const carritoAcumulado = JSON.parse(localStorage.getItem('carrito')) || [];
 const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-
+let productos = [];
 //Sección agregar a favoritos
 function popUpAgregasteAFavoritos () {
     Toastify({
@@ -125,6 +125,8 @@ const eliminarItemDeCarrito = (id) => {
     const btnEliminarItemDeCarrito = document.getElementById('eliminar-item');
     btnEliminarItemDeCarrito.onclick = () => {
         eliminarItemDeCarrito(id)
+        actualizarDomCarrito()
+        
     };
     localStorage.setItem('carrito', JSON.stringify(carritoAcumulado))
     cardsCarrito()
@@ -138,7 +140,7 @@ function cardsCarrito() {
                         <tr>
                             <td class="align-middle"><img src="${producto.img}" alt="${producto.titulo}" style="width: 50px;">${producto.titulo}</td>
                             <td class="align-middle">$${producto.precio}</td>
-                            <td class="align-middle"><button  onclick="eliminarItemDeCarrito(${producto.id}) "id="eliminar-item" class="btn btn-sm btn-primary" id="eliminar-item" ><i class="fa fa-times"></i></button></td>
+                            <td class="align-middle"><button  onclick="eliminarItemDeCarrito(${producto.id}) "id="eliminar-item" class="btn btn-sm btn-primary" ><i class="fa fa-times"></i></button></td>
                         </tr>
                         `
     //DOM cards de modal                  
@@ -168,6 +170,8 @@ cardsCarrito(carritoAcumulado)
 
     btnCerrarModal.addEventListener('click', () => {
         modal.close();
+        actualizarDomCarrito()
+        cardsCarrito
         
     })
 
@@ -185,5 +189,62 @@ btnAbrirFavoritos.addEventListener('click', () => {
 
 btnCerrarFavoritos.addEventListener('click', () => {
     modalFavoritos.close()
-    cardsCarrito()
+    cardsFavoritos()
+    actualizarDomFavoritos()
 })
+
+//Sección cards para detallar el carrito ////////////////////////////////////////////////////////////////////////////////////////
+const cardsCarritoHTML = () => {
+    let acumuladorCardsCarrito = ``;
+    carritoAcumulado.forEach((producto) => {
+    acumuladorCardsCarrito += `              
+    <tr>
+    <td class="align-middle"><img src="${producto.img}" alt="${producto.titulo}" style="width: 50px;">${producto.titulo}</td>
+    <td class="align-middle">$${producto.precio}</td>
+    <td class="align-middle">
+        <div class="input-group quantity mx-auto" style="width: 100px;">
+            <div class="input-group-btn">
+                <button class="btn btn-sm btn-primary btn-minus" id="restar-cantidad" onclick="restarCantidad(${producto.precio})">
+                <i class="fa fa-minus"></i>
+                </button>
+            </div>
+            <input type="text" class="form-control form-control-sm bg-secondary text-center" value="1">
+            <div class="input-group-btn">
+                <button class="btn btn-sm btn-primary btn-plus" id="sumar-cantidad" onclick="sumarCantidad(${producto.precio})">
+                    <i class="fa fa-plus"></i>
+                </button>
+            </div>
+        </div>
+    </td>
+    <td class="align-middle">$150</td>
+    <td class="align-middle"><button class="btn btn-sm btn-primary" onclick="eliminarItemDeCarrito(${producto.id})" id="eliminar-item"><i class="fa fa-times"></i></button></td>
+</tr>`
+    })
+    document.getElementById('tarjeta-detalle-carrito').innerHTML = acumuladorCardsCarrito;
+    renderizarDomCarrito()
+
+
+}
+cardsCarritoHTML(carritoAcumulado)
+
+//Funciones para agregar o sacar productos del carrito/////////////////////////////////////////////////////
+
+function renderizarDomCarrito () {
+    const subtotalCarrito = carritoAcumulado.reduce((acumulador, producto) => acumulador + producto.precio, 0);
+    const totalCarrito = carritoAcumulado.reduce((acumulador, producto) => acumulador + producto.precio, 500);
+    document.getElementById('subtotal-carrito-html').innerHTML = " $" + subtotalCarrito;
+    document.getElementById('total-carrito-html').innerHTML = " $" + totalCarrito;
+    
+
+}
+function renderizarCarrito () {
+
+}
+
+function sumarCantidad () {
+
+}
+
+function restarCantidad () {
+
+}
