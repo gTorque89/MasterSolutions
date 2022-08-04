@@ -223,8 +223,16 @@ const cardsCarritoHTML = () => {
     document.getElementById('tarjeta-detalle-carrito').innerHTML = acumuladorCardsCarrito;
     renderizarDomCarrito()
 
+    const btnSumarItem = document.getElementById('sumar-cantidad');
+    btnSumarItem.onclick = () => {
+        sumarCantidad()
 
-}
+    }
+    const btnRestarItem = document.getElementById('restar-cantidad');
+    btnRestarItem.onclick = () => {
+        restarCantidad()
+
+    }
 cardsCarritoHTML(carritoAcumulado)
 
 //Funciones para agregar o sacar productos del carrito/////////////////////////////////////////////////////
@@ -243,6 +251,9 @@ function renderizarCarrito () {
 
 function sumarCantidad () {
 
+
+    
+    };   
 }
 
 function restarCantidad () {
