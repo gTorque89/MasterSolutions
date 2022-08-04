@@ -222,8 +222,8 @@ const cardsCarritoHTML = () => {
     })
     document.getElementById('tarjeta-detalle-carrito').innerHTML = acumuladorCardsCarrito;
     renderizarDomCarrito()
-
-    const btnSumarItem = document.getElementById('sumar-cantidad');
+}
+    /*const btnSumarItem = document.getElementById('sumar-cantidad');
     btnSumarItem.onclick = () => {
         sumarCantidad()
 
@@ -231,8 +231,8 @@ const cardsCarritoHTML = () => {
     const btnRestarItem = document.getElementById('restar-cantidad');
     btnRestarItem.onclick = () => {
         restarCantidad()
-
     }
+    */
 cardsCarritoHTML(carritoAcumulado)
 
 //Funciones para agregar o sacar productos del carrito/////////////////////////////////////////////////////
@@ -242,9 +242,8 @@ function renderizarDomCarrito () {
     const totalCarrito = carritoAcumulado.reduce((acumulador, producto) => acumulador + producto.precio, 500);
     document.getElementById('subtotal-carrito-html').innerHTML = " $" + subtotalCarrito;
     document.getElementById('total-carrito-html').innerHTML = " $" + totalCarrito;
-    
-
 }
+
 function renderizarCarrito () {
 
 }
@@ -252,8 +251,6 @@ function renderizarCarrito () {
 function sumarCantidad () {
 
 
-    
-    };   
 }
 
 function restarCantidad () {

@@ -57,7 +57,7 @@ escuchadorBotonMostrarProductos();
 
 
 
-/*//Filtrar categoria
+//Filtrar categoria
     
 const obtenerProductosPorCategoria = (categoria) => {
     return new Promise((resolve, reject) => {
@@ -72,7 +72,7 @@ obtenerProductosPorCategoria('Laptops').then((productos) => {
     const nuevoListadoFiltrado = productos;
     generadorDeCards(nuevoListadoFiltrado)
 })
-*/
+
 //Sección agregar a favoritos
 function popUpAgregasteAFavoritos () {
     Toastify({
@@ -261,7 +261,7 @@ btnCerrarFavoritos.addEventListener('click', () => {
 
 
 
-/*function ordenarPrecio() {
+function ordenarPrecio() {
 const ordenarPorPrecio = productos.sort((a, b) => {
     if (a.precio > b.precio) {
         return 1;
@@ -272,9 +272,3 @@ const ordenarPorPrecio = productos.sort((a, b) => {
     return 0;
 })
 }
-const btnOrdenarPrecio = document.getElementById('ordenar-precio');
-        btnOrdenarPrecio.onclick = () => {
-            ordenarPrecio()
-        };    
-const listadoOrdenado =[];
-*/
